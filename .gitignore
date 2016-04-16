@@ -150,4 +150,4 @@ tramp
 
 # credentials
 **/credentials
-
+**/settings_local.py
