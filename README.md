@@ -1,6 +1,12 @@
 # Morning Project Samurai Web Site Development Project
 
 
+## Frameworks
+
+* Angular 2
+* Django
+
+
 ## Development Standards
 
 ### Python
