@@ -1,6 +1,11 @@
 # Morning Project Samurai Web Site Development Project
 
 
+## Development Standards
+
+### Python
+[Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
+
 ## Contributors
 
 | Name           | Github                  | Contributions                 |
