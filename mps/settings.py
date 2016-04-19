@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_jinja',
+    'accounts.apps.AccountsConfig',
+    'tags.apps.TagsConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -54,9 +57,26 @@ ROOT_URLCONF = 'mps.urls'
 
 TEMPLATES = [
     {
+        'BACKEND': 'django_jinja.backend.Jinja2',
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'match_extension': None,
+            'match_regex': r'^(?!admin/).*',
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        }
+    },
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,6 +103,13 @@ DATABASES = {
 }
 
 
+# Authentication backends
+AUTHENTICATION_BACKENDS = [
+    'core.backends.auth.GitHubOauth2AuthenticationBackend',
+    'core.backends.auth.EmailAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -105,9 +132,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja-JP'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -121,8 +148,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-TEMPLATE_LOADERS = (
-    'django_jinja.loaders.AppLoader',
-    'django_jinja.loaders.FileSystemLoader',
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
-)
+try:
+    from mps.local_settings import *
+except ImportError:
+    pass

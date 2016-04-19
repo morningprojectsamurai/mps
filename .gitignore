@@ -150,5 +150,7 @@ tramp
 
 # credentials
 **/credentials
-**/settings_local.py
+**/local_settings.py
 **/db.sqlite3
+**/images
+**/migrations/[0-9]*

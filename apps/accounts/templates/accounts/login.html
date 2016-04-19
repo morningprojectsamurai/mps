@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+    <a class="picture-button-green" href="{{ github_oauth2_url }}">
+        <div class="button-icon">
+            <img src="{{ static('images/Octocat.png') }}">
+        </div>
+        <div class="button-text">Login with GitHub</div>
+    </a>
+{% endblock %}
