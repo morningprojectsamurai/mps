@@ -24,7 +24,7 @@ import string
 from django.db import models
 from django.contrib.auth.models import User
 from core.mixins.models import DateTimeMixin
-from accounts.exceptions import EmailDuplicationError, InvalidUsernameError
+from accounts.exceptions import InvalidUsernameError
 
 
 __author__ = 'Junya Kaneko <junya@mpsamurai.org>'

@@ -18,11 +18,8 @@ Created on 16 April 2016
 @author Junya Kaneko <junya@mpsamurai.org>
 """
 
+
 __author__ = 'Junya Kaneko <junya@mpsamurai.org>'
-
-
-class EmailDuplicationError(Exception):
-    pass
 
 
 class InvalidUsernameError(Exception):
